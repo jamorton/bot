@@ -255,7 +255,7 @@ GH_AINLINE GhChain * next_chain(ReplyContext * ctx, GhChain * chain, bool forw)
         if (!(symb->flags & GH_SYMBOL_USED) &&
               gh_sset_has(ctx->keywords, symb) &&
               symb->usage < ctx->kw_avg_usage &&
-              rand_double(ctx) < 0.8) {
+              rand_double(ctx) < 0.9) {
             reply_debug("Choosing kw '%s'\n", symb->data);
             next = symb;
             next->flags |= GH_SYMBOL_USED;
@@ -298,10 +298,9 @@ GH_AINLINE GhChain * next_chain(ReplyContext * ctx, GhChain * chain, bool forw)
     if (forw) {
         GhQuad q = {chain->q.b, chain->q.c, chain->q.d, next};
         return gh_chain_get(ctx->gh, &q);
-    } else {
-        GhQuad q = {next, chain->q.a, chain->q.b, chain->q.c};
-        return gh_chain_get(ctx->gh, &q);
     }
+    GhQuad q = {next, chain->q.a, chain->q.b, chain->q.c};
+    return gh_chain_get(ctx->gh, &q);
 }
 
 char * gh_input_with_reply(GhBrain * gh, const char * input)
