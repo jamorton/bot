@@ -15,7 +15,7 @@ WARNINGS=-Wall -Wextra -Wshadow -pedantic -Werror \
          -Wno-unused-variable
 
 CC=gcc
-CFLAGS=$(WARNINGS) -std=c99 -Isrc -march=native -fPIC -m32
+CFLAGS=$(WARNINGS) -std=c99 -Isrc -march=corei7 -fPIC -m32
 DEBUG_CFLAGS=-g -DGH_DEBUG
 NONDEBUG_CFLAGS=-O3
 
