@@ -48,7 +48,7 @@ clean:
 	rm -rf bin
 	rm -rf out
 
-production: $(LIB_OUT)
+production:
 	make DEBUG=0
 	cp -f bin/libgigahal.so pygigahal/gigahal
 

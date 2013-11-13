@@ -280,9 +280,12 @@ GH_AINLINE GhChain * next_chain(ReplyContext * ctx, GhChain * chain, bool forw)
            variable chance) */
         else if (symb->usage < next->usage && symb->flags & GH_SYMBOL_ISWORD) {
             double chance = (1.5*(1.0 - symb->usage / (double)next->usage) + inv)/2.5;
-            reply_debug("'%s' (%d) vs '%s' (%d) chance %f\n", symb->data, symb->usage, next->data, next->usage, chance);
-            if (rand_double(ctx) < chance)
+            reply_debug("'%s' (%d) vs '%s' (%d) chance %f", symb->data, symb->usage, next->data, next->usage, chance);
+            if (rand_double(ctx) < chance) {
+                reply_debug(" - picked");
                 next = symb;
+            }
+            reply_debug("\n");
 
         /* otherwise, each symbol has equal chance 1/len of being picked */
         } else if (rand_double(ctx) < inv)
