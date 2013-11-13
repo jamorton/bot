@@ -6,3 +6,4 @@ oldgigahal
 *.pyc
 env
 *.gh
+*.db
