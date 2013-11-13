@@ -1,0 +1,7 @@
+
+names = ["Walrus"] # names bot responds to
+botname = "A_Bot"  # name of program as skype API sees it
+debug = True       # debug mode on?
+debug_chat =    "" # if in debug mode, only respond on this chat
+gh_chance = 0.1    # chance bot will use gigahal to respond when not addressed
+ignore = []        # list of chat names bot should ignore

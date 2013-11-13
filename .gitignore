@@ -1,0 +1,7 @@
+oldgigahal
+.DS_Store
+*~
+.\#*
+\#*\#
+*.pyc
+env

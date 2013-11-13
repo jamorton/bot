@@ -1,0 +1,11 @@
+bin
+out
+data
+*.a
+tools/fun.py
+tools/read_skype.py
+env
+*.egg-info
+*.so
+pygigahal/dist
+*.gh
