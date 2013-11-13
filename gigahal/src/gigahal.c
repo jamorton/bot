@@ -278,7 +278,7 @@ GH_AINLINE GhChain * next_chain(ReplyContext * ctx, GhChain * chain, bool forw)
         /* if this symbol has a lower usage than the one we currently have
            picked out, we want to prefer picking this one (according to some
            variable chance) */
-        else if (symb->usage < next->usage) {
+        else if (symb->usage < next->usage && symb->flags & GH_SYMBOL_ISWORD) {
             double chance = (1.5*(1.0 - symb->usage / (double)next->usage) + inv)/2.5;
             reply_debug("'%s' (%d) vs '%s' (%d) chance %f\n", symb->data, symb->usage, next->data, next->usage, chance);
             if (rand_double(ctx) < chance)
