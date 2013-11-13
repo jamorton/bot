@@ -183,7 +183,7 @@ if __name__ == "__main__":
 			try:
 				f = open(inp[2:], "r")
 				for line in f:
-					bot.gh.input_no_reply(line)
+					bot.gh.input_no_reply(line.strip())
 				f.close()
 			except IOError:
 				print "No such file"
