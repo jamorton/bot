@@ -175,5 +175,15 @@ if __name__ == "__main__":
 				f = open(inp[2:], "r")
 				for line in f.read().split("\1\n"):
 					bot.gh.input_no_reply(line)
+				f.close()
+			except IOError:
+				print "No such file"
+
+		elif len(inp) > 2 and inp[0] == 'f':
+			try:
+				f = open(inp[2:], "r")
+				for line in f:
+					bot.gh.input_no_reply(line)
+				f.close()
 			except IOError:
 				print "No such file"
