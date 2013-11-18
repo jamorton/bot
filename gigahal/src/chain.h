@@ -26,6 +26,21 @@ typedef struct GhChain {
     hash_t hash;
 } GhChain;
 
+void gh_chain_init(GhBrain * gh);
+void gh_chain_deinit(GhBrain * gh);
+
+GhChain * gh_chain_get(GhBrain * gh, GhQuad * q);
+GhChain * gh_chain_add(GhBrain * gh, GhQuad * q);
+
+GH_AINLINE hash_t gh_quad_hash(GhQuad * q)
+{
+    return (
+        (((q->a->hash  * 37)
+         + q->b->hash) * 37
+         + q->c->hash) * 37
+         + q->d->hash);
+}
+
 GH_AINLINE bool gh_quad_eq(GhQuad * x, GhQuad * y)
 {
     return (
@@ -34,21 +49,6 @@ GH_AINLINE bool gh_quad_eq(GhQuad * x, GhQuad * y)
         x->c == y->c &&
         x->d == y->d
     );
-}
-
-void gh_chain_init(GhBrain * gh);
-void gh_chain_deinit(GhBrain * gh);
-
-GhChain * gh_chain_get(GhBrain * gh, GhQuad * q);
-GhChain * gh_chain_add(GhBrain * gh, GhQuad * q);
-
-GH_AINLINE hash_t gh_hash_quad(GhQuad * q)
-{
-    return (
-        (((q->a->hash  * 37)
-         + q->b->hash) * 37
-         + q->c->hash) * 37
-         + q->d->hash);
 }
 
 #endif

@@ -119,7 +119,7 @@ static void serialize(GhBrain * gh, FILE * f)
     for (i = 0; i < gh->chain_mask; i++) {
         GhChain * chain = gh->chains[i];
         while (chain != NULL) {
-            chain->hash = gh_hash_quad(&chain->q);
+            chain->hash = gh_quad_hash(&chain->q);
             chain = chain->next;
         }
     }

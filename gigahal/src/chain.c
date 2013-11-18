@@ -67,7 +67,7 @@ void gh_chain_deinit(GhBrain * gh)
 
 GhChain * gh_chain_get(GhBrain * gh, GhQuad * q)
 {
-    GhChain * chain = gh->chains[gh_hash_quad(q) & gh->chain_mask];
+    GhChain * chain = gh->chains[gh_quad_hash(q) & gh->chain_mask];
 
     CHAIN_FOREACH(chain)
         if (gh_quad_eq(q, &chain->q))
@@ -78,7 +78,7 @@ GhChain * gh_chain_get(GhBrain * gh, GhQuad * q)
 
 GhChain * gh_chain_add(GhBrain * gh, GhQuad * q)
 {
-    hash_t hash = gh_hash_quad(q);
+    hash_t hash = gh_quad_hash(q);
     size_t bucket = hash & gh->chain_mask;
     GhChain * chain = gh->chains[bucket];
 
