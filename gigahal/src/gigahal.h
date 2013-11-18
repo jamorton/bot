@@ -7,12 +7,6 @@
 
 #define GH_VERSION 2.0-alpha
 
-typedef struct {
-    float keyword_cutoff;
-} GhConfig;
-
-extern GhConfig gh_config_default;
-
 typedef struct GhBrain {
     size_t symbol_count;
     size_t symbol_mask;
@@ -24,13 +18,11 @@ typedef struct GhBrain {
 
     size_t max_symbol_usage;
 
-    GhConfig config;
-
     GhRand rand;
 } GhBrain;
 
-GhBrain * gh_new_brain(GhConfig config);
-GhBrain * gh_new_brain_default(void);
+GhBrain * gh_new_brain(void);
+void gh_brain_del(GhBrain * gh);
 
 void gh_input_no_reply(GhBrain * gh, const char * input);
 char * gh_input_with_reply(GhBrain *gh, const char * input);

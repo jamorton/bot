@@ -11,7 +11,7 @@ GhSymbol * symbs[99999999];
 
 int main(void)
 {
-    GhBrain * gh = gh_new_brain(gh_config_default);
+    GhBrain * gh = gh_new_brain();
     WordList list = load_words("test/words.txt");
     GhSvec * vec = gh_svec_s(32);
 

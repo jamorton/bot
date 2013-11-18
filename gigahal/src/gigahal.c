@@ -11,19 +11,14 @@
 #include <string.h>
 #include <time.h>
 
-GhConfig gh_config_default = {
-    .keyword_cutoff = 0.4f
-};
-
 /*----------------------------------------------------------
    Learning Functions
   ----------------------------------------------------------*/
 
-GhBrain * gh_new_brain(GhConfig config)
+GhBrain * gh_new_brain()
 {
     GhBrain * gh = gh_new(GhBrain);
 
-    gh->config = config;
     gh->max_symbol_usage = 0;
     gh_symbol_init(gh);
     gh_chain_init(gh);
@@ -33,9 +28,10 @@ GhBrain * gh_new_brain(GhConfig config)
     return gh;
 }
 
-GhBrain * gh_new_brain_default(void)
+void gh_brain_del(GhBrain * gh)
 {
-    return gh_new_brain(gh_config_default);
+    gh_chain_deinit(gh);
+    gh_symbol_deinit(gh);
 }
 
 static void learn(GhBrain * gh, GhSvec * symbols)

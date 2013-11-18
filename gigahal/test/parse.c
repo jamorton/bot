@@ -19,7 +19,7 @@ const char * strings[] = {
 
 int main(void)
 {
-    GhBrain * gh = gh_new_brain(gh_config_default);
+    GhBrain * gh = gh_new_brain();
 
     for (unsigned int i = 0; i < sizeof(strings)/sizeof(char *); i++) {
         GhSvec * symbols = gh_svec();

@@ -77,7 +77,7 @@ int main(int argc, const char * argv[])
 
     const char * options = argv[1];
 
-    GhBrain * gh = gh_new_brain(gh_config_default);
+    GhBrain * gh = gh_new_brain();
 
     gh_input_no_reply(gh, "This is test sentence number one.");
     gh_input_no_reply(gh, "Different sentence to provide additional input");

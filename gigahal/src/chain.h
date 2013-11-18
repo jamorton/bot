@@ -37,6 +37,7 @@ GH_AINLINE bool gh_quad_eq(GhQuad * x, GhQuad * y)
 }
 
 void gh_chain_init(GhBrain * gh);
+void gh_chain_deinit(GhBrain * gh);
 
 GhChain * gh_chain_get(GhBrain * gh, GhQuad * q);
 GhChain * gh_chain_add(GhBrain * gh, GhQuad * q);

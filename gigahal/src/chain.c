@@ -50,6 +50,21 @@ void gh_chain_init(GhBrain * gh)
     gh->chains = gh_new_array(GhChain *, gh->chain_mask + 1);
 }
 
+void gh_chain_deinit(GhBrain * gh)
+{
+    for (size_t i = 0; i <= gh->chain_mask; i++) {
+        GhChain * chain = gh->chains[i];
+        while (chain != NULL) {
+            GhChain * next = chain->next;
+            gh_free(chain->forw.table);
+            gh_free(chain->back.table);
+            gh_free(chain);
+            chain = next;
+        }
+    }
+    gh_free(gh->chains);
+}
+
 GhChain * gh_chain_get(GhBrain * gh, GhQuad * q)
 {
     GhChain * chain = gh->chains[gh_hash_quad(q) & gh->chain_mask];

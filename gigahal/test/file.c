@@ -6,7 +6,7 @@
 
 int main(int argc, const char * argv[])
 {
-    GhBrain * gh = gh_new_brain(gh_config_default);
+    GhBrain * gh = gh_new_brain();
 
 	FILE * fp = fopen("data/skype.txt", "r");
     char buf[10000];

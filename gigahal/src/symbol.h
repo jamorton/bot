@@ -62,6 +62,7 @@ GH_AINLINE void gh_symbol_inc_usage(GhBrain * gh, GhSymbol * symbol)
 }
 
 void gh_symbol_init(GhBrain * gh);
+void gh_symbol_deinit(GhBrain * gh);
 
 GhSymbol * gh_symbol_new(GhBrain * gh, const char * str, uint8_t flags);
 GhSymbol * gh_symbol_newl(GhBrain * gh, const char * str, size_t len, uint8_t flags);

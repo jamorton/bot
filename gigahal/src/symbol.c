@@ -62,6 +62,21 @@ void gh_symbol_init(GhBrain * gh)
     gh->symbol_count = 0;
 }
 
+void gh_symbol_deinit(GhBrain * gh)
+{
+    for (size_t i = 0; i <= gh->symbol_mask; i++) {
+        GhSymbol * symbol = gh->symbols[i];
+        while (symbol != NULL) {
+            GhSymbol * next = symbol->next;
+            if (gh_symbol_isword(symbol))
+                gh_free(symbol->chp);
+            gh_free(symbol);
+            symbol = next;
+        }
+    }
+    gh_free(gh->symbols);
+}
+
 GhSymbol * gh_symbol_newl(GhBrain * gh, const char * str, size_t len_, uint8_t flags)
 {
     if (len_ > UINT16_MAX || len_ == 0)
@@ -119,7 +134,7 @@ GH_AINLINE void chp_resize(GhSymbol * symbol)
             break;
         }
     }
-    free(symbol->chp);
+    gh_free(symbol->chp);
     symbol->chp_mask = nmask;
     symbol->chp = ntable;
 }

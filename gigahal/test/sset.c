@@ -8,7 +8,7 @@
 int main(void)
 {
 
-    GhBrain * gh = gh_new_brain(gh_config_default);
+    GhBrain * gh = gh_new_brain();
 
     GhSymbolSet * set = gh_sset_new();
 

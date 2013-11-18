@@ -134,7 +134,7 @@ static GhBrain * unserialize(FILE * f)
 
     uint64_t fversion = read_uint(f);
 
-    GhBrain * gh = gh_new_brain_default();
+    GhBrain * gh = gh_new_brain();
     gh->max_symbol_usage = (size_t)read_uint(f);
 
     size_t i, num_symbols = (size_t)read_uint(f);
