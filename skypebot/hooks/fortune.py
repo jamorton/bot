@@ -8,7 +8,7 @@ answers = [
 	"Absolutely",
 	"Of course",
 	"I think so",
-	"Why not?",
+	"Why not",
 	"Do it",
 	"Not a good idea",
 	"Good idea",
@@ -26,7 +26,7 @@ answers = [
 	"No sir",
 	"I think no",
 	"I wouldn't",
-	"IT'S A TRAP!"
+	"IT'S A TRAP"
 ]
 
 because = [
@@ -68,4 +68,3 @@ def why(bot, user, msg):
 	if random.random() > 0.7:
 		msg.Chat.SendMessage(random.choice(because) + random.choice(endings))
 		return True
-

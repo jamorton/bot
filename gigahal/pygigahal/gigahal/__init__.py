@@ -4,10 +4,14 @@ from ctypes import *
 import os
 import pkg_resources
 
+__all__ = ['Gigahal']
+
 _lib = CDLL(pkg_resources.resource_filename(__name__, "libgigahal.so"))
 
-_lib.gh_new_brain_default.restype = c_void_p
-_lib.gh_new_brain_default.argtypes = []
+_lib.gh_new_brain.restype = c_void_p
+_lib.gh_new_brain.argtypes = []
+_lib.gh_brain_del.restype = None
+_lib.gh_brain_del.argtypes = [c_void_p]
 _lib.gh_input_no_reply.restype = None
 _lib.gh_input_no_reply.argtypes = [c_void_p, c_char_p]
 _lib.gh_free.restype = None
@@ -18,6 +22,8 @@ _lib.gh_save.restype = None
 _lib.gh_save.argtypes = [c_void_p, c_char_p]
 _lib.gh_load.restype = c_void_p
 _lib.gh_load.argtypes = [c_char_p]
+_lib.gh_mem_total_bytes.argtypes = []
+_lib.gh_mem_total_bytes.restype = [c_size_t]
 
 class Gigahal(object):
 	def __init__(self, filename):
@@ -44,6 +50,11 @@ class Gigahal(object):
 
 	def save(self):
 		_lib.gh_save(self.gh_ptr, self.filename)
+
+	def __del__(self):
+		if self.gh_ptr:
+			_lib.gh_brain_del(self.gh_ptr)
+			self.gh_ptr = None
 
 if __name__ == '__main__':
 	gh = Gigahal('brain.gh')
