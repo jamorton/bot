@@ -23,7 +23,7 @@ _lib.gh_save.argtypes = [c_void_p, c_char_p]
 _lib.gh_load.restype = c_void_p
 _lib.gh_load.argtypes = [c_char_p]
 _lib.gh_mem_total_bytes.argtypes = []
-_lib.gh_mem_total_bytes.restype = [c_size_t]
+_lib.gh_mem_total_bytes.restype = c_size_t
 
 class Gigahal(object):
 	def __init__(self, filename):
