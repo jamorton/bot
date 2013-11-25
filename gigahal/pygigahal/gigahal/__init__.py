@@ -52,7 +52,7 @@ class Gigahal(object):
 		_lib.gh_save(self.gh_ptr, self.filename)
 
 	def __del__(self):
-		if self.gh_ptr:
+		if self.gh_ptr and _lib:
 			_lib.gh_brain_del(self.gh_ptr)
 			self.gh_ptr = None
 

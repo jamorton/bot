@@ -18,7 +18,7 @@ all_gifs = {
 	"brushin.gif": ["brush", "masturbat", "jacking"],
 	"butt_slide.gif": ["baseball", "butt", "slide"],
 	"can_fap.gif": ["fap"],
-	"chapmagne.gif": ["champagne", "starcraft", "esports"],
+	"champagne.gif": ["champagne", "starcraft", "esports"],
 	"chill_out_scooby.gif": ["scooby", "chill", "marijuana"],
 	"cocaine.gif": ["cocaine"],
 	"come_at_me_bro.gif": ["come at me bro"],
