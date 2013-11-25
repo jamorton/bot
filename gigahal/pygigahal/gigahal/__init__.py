@@ -32,7 +32,7 @@ class Gigahal(object):
 		if os.path.isfile(filename):
 			self.gh_ptr = _lib.gh_load(filename)
 		if self.gh_ptr is None:
-			self.gh_ptr = _lib.gh_new_brain_default()
+			self.gh_ptr = _lib.gh_new_brain()
 
 	def _input_str(self, inp):
 		if isinstance(inp, unicode):
