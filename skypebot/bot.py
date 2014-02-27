@@ -14,7 +14,6 @@ from skype import SkypeChat
 from glob import glob
 from os import path
 
-import gifs
 import config
 import util
 
@@ -47,11 +46,10 @@ class Bot(SkypeChat):
 		self.save_thread.start()
 
 	def exit(self):
-		self.save_thread.stop()
 		self.save_lock.acquire()
+		self.save_thread.stop()
 		self.gh.save()
 		self.gh_log.close()
-		gifs.usage_db.close()
 		self.save_lock.release()
 
 	#-----------------------------
@@ -142,9 +140,6 @@ class Bot(SkypeChat):
 				return
 			else:
 				self.gh.input_no_reply(cleaned)
-
-		if gifs.message(cleaned, cm.Chat, cm.FromDisplayName.split(" ")[0]):
-			return
 
 if __name__ == "__main__":
 
