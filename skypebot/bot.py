@@ -132,7 +132,7 @@ class Bot(SkypeChat):
 					return
 
 		if "http" not in cleaned and len(cleaned) < 200:
-			self.gh_log.write(cleaned.replace("\1", "") + "\1\n")
+			self.gh_log.write(cleaned.replace("\1", "").encode("utf-8") + "\1\n")
 			if was_addressed or random.random() < config.gh_chance:
 				name = random.choice(list(self.seen_names[cm.Chat.Name])).strip().split(" ")[0]
 				ghinp = re.sub("walrus", name, cleaned, 0, re.I)
